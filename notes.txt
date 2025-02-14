@@ -1,0 +1,61 @@
+apidoc.http 
+===========
+
+# Separate each API request with a line of ### between them to recognise the next api call to get 'Sent Request' on the top of each api. 
+# Don't give enter line spaces in this file. 
+
+# Structure
+
+# method<space>URL
+# Separate each api with a ###(minimum 3 '#')
+
+# for POST
+
+# 1st line - method<space>URL
+# 2nd line - Content-Type: application/JSON/XML
+# 3rd line - Authorisation -- if not give an enter/blank line
+# 4th line - Data to be sent -- don't give comma after last item
+
+-------------------------------------------
+
+Authentication in rest_framework -- Not checking if the session is active as in django
+================================
+
+Default methods -- authentications.py
+
+authentication + permission
+===========================
+
+BsicAthentication -- passing username and password for each login of a particular username
+
+SessionAuthentication -- csrf_token -- not commonly used
+
+TokenAuthentication -- authentication of username and password and creating a token
+
+Other method 
+============
+
+jwt
+
+
+permissions.py -- asking previlages
+==============
+
+IsAdminUser
+
+IsAuthenticated
+
+AllowAny
+
+IsAuthenticatedOrReadOnly -- If not authenticated, read only mode is available.
+
+
+
+
+
+
+
+
+
+
+

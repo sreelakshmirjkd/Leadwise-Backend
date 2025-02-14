@@ -1,0 +1,139 @@
+# Separate each API request with a line of ### between them to recognise the next api call to get 'Sent Request' on the top of each api. 
+# Don't give enter line spaces in this file.
+# For each different uRL each view should be created. 
+
+# Structure
+
+# method<space>URL
+# Separate each api with a ###(minimum 3 '#')
+
+# for POST
+
+# 1st line - method<space>URL
+# 2nd line - Content-Type: application/JSON/XML
+# 3rd line - Authorisation -- if not give an enter/blank line
+# 4th line - Data to be sent -- don't give comma after last item
+
+
+# ----------------------------------------------------------
+
+
+
+
+
+# API to get a token pair
+
+POST http://127.0.0.1:8000/token/
+Content-Type: application/json
+
+{
+    "username": "luminar",
+    "password": "luminar" 
+}
+
+
+###
+
+POST http://127.0.0.1:8000/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczODM2OTE5MywiaWF0IjoxNzM4MjgyNzkzLCJqdGkiOiI5ZjQ0ZmI2MjgwNTQ0ODA2OGFlZTRhNTU0NjM1ZTVhZiIsInVzZXJfaWQiOjF9.nThRQboe3Du8id4jlfKMzofrWNJw9tgA3_sdSTf9oto"
+}
+
+
+###
+
+
+# API for listing all leads 
+
+GET http://127.0.0.1:8000/leads/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MjgzMTU5LCJpYXQiOjE3MzgyODI3OTMsImp0aSI6ImQ4NTZjMjQwY2ZjYzQxOGVhM2IwYjY4Yjc0Yzc2NzhhIiwidXNlcl9pZCI6MX0.PAV75HULfXAzX1tSy2l9c20QwClLcuvMzF-aoE3iWlo
+
+###
+
+# API for creating each lead -- space after authorization is a must.
+ 
+POST http://127.0.0.1:8000/leads/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MTk5NTcwLCJpYXQiOjE3MzgxOTkyNzAsImp0aSI6Ijg1NWY0YTAzZGVhMzQyOTA5MWIzNjFiNjlkYmJmZWU1IiwidXNlcl9pZCI6MX0.eJ4UtW4rPnoW0pz7zSVDBpgTY4MmW4fAE4f6v_bmvys
+
+{
+    "name": "Meera",
+    "mobile": "7892986989",
+    "email": "meera@gmail.com",
+    "college": "Sanjo College ",
+    "qualification": "BCom",
+    "passout_year": "2024",
+    "source": "instagram",
+    "course": "TESTING",
+    "course_mode": "ONLINE",
+    "status": "FOLLOWUP"
+}
+
+
+### 
+
+# API for fetching single data
+
+GET http://127.0.0.1:8000/leads/2/
+Authorization: Basic luminar:luminar
+
+
+###
+
+# API for updating a particular data
+
+PUT http://127.0.0.1:8000/leads/3/
+Content-Type: application/json
+Authorization: Basic luminar:luminar
+
+{
+    "name": "Sree",
+    "mobile": "7592986950",
+    "email": "sreerjkd@gmail.com",
+    "college": "CUK",
+    "qualification": "MSc",
+    "passout_year": "2019",
+    "source": "walkin",
+    "course": "PYTHON DJANGO",
+    "course_mode": "ONLINE",
+    "status": "NOTINTERESTED"
+}
+
+# Since, this is PUT method, we need to pass all fields in the serialiser even if we don't want to update all fields.
+
+#  For PATCH, we pass only the fields to get updated.
+
+
+
+###
+
+# API for deleteing a particular data
+
+DELETE http://127.0.0.1:8000/leads/2/
+Authorization: Basic luminar:luminar
+
+###
+
+# API to get courses only
+
+GET http://127.0.0.1:8000/leads/courses/all/
+
+###
+
+# API to get sources
+
+GET http://127.0.0.1:8000/leads/courses/source/
+
+###
+
+# API to get course modes
+
+GET http://127.0.0.1:8000/leads/courses/modes/
+
+###
+
+# API for lead summary -- for current month
+
+GET http://127.0.0.1:8000/leads/summary/
